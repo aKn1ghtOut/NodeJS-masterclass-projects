@@ -59,3 +59,5 @@ typings/
 
 # next.js build output
 .next
+homework1_Hello_World_API/https/cert.pem
+homework1_Hello_World_API/https/key.pem
