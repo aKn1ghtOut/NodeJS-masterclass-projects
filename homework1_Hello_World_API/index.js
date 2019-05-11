@@ -16,7 +16,7 @@
  });
 
 
- //Start the server and have it listen on port 3000
+ //Start the server and have it listen
  HTTP_Server.listen(config.httpPort, function()
  {
      console.log("The HTTP server is listening on", config.httpPort);
@@ -60,8 +60,8 @@
     //var headers = req.headers;
 
     //Get the payload if it exists
-    var decoder = new StringDecoder("utf-8");
-    var buffer = "";
+    //var decoder = new StringDecoder("utf-8");
+    //var buffer = "";
     req.on('data', function(data)
     {
         //buffer += decoder.write(data);
@@ -74,8 +74,8 @@
         var chosenHandler = typeof(router[tPath]) !== 'undefined' ? router[tPath] : handlers.notFound;
         
         //data for the callback
-        var data = {
-            "trimmedPath" : tPath}/*,
+        var data = {};/*{
+            "trimmedPath" : tPath,
             "queryStringObject" : queryStringObject,
             'method' : method,
             'headers': headers,
@@ -90,7 +90,7 @@
             //Default payload is an empty payload
             payload = typeof(payload) == 'object' ? payload : {};
 
-            //let payloadString = JSON.stringify(payload);
+            let payloadString = JSON.stringify(payload);
 
             res.setHeader('Content-Type', 'application/json');
             res.writeHead(statusCode);
